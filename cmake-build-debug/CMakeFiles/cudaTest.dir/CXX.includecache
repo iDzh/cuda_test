@@ -7,9 +7,11 @@
 #IncludeRegexTransform: 
 
 /home/admin1/Desktop/Cuda_test/cuda_test.h
+stdlib.h
+-
 stdio.h
 -
-string
+time.h
 -
 cuda_runtime.h
 -
@@ -17,6 +19,8 @@ cuda_runtime.h
 /home/admin1/Desktop/Cuda_test/main.cpp
 cuda_test.h
 /home/admin1/Desktop/Cuda_test/cuda_test.h
+stdio.h
+-
 
 /usr/local/cuda/include/builtin_types.h
 device_types.h
