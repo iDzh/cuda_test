@@ -232,7 +232,7 @@ void test_array_sum_gpu_thread_block_parallel_shared_memory()
     cudaMemcpy(gpu_data, data, sizeof(int) * DATA_SIZE, cudaMemcpyHostToDevice);
 
     cal_start = clock();
-    //GPU实现：多线程连续内存访问
+    //GPU实现：多进程块多线程并行访问 +　共享内存
     ArraySumThreadBlockParallelSharedMemory<<<BLOCK_NUM, THREAD_NUM, THREAD_NUM * sizeof(double)>>>(gpu_data, gpu_sum);
     cudaDeviceSynchronize();
     cal_finish = clock();
@@ -257,7 +257,7 @@ void test_array_sum_gpu_thread_block_parallel_shared_memory_tree_plus()
     cudaMemcpy(gpu_data, data, sizeof(int) * DATA_SIZE, cudaMemcpyHostToDevice);
 
     cal_start = clock();
-    //GPU实现：多线程连续内存访问
+    //GPU实现：多进程块多线程并行访问 + 树状加法
     ArraySumThreadBlockParallelSharedMemoryTreePlus<<<BLOCK_NUM, THREAD_NUM, THREAD_NUM * sizeof(double)>>>(gpu_data, gpu_sum);
     cudaDeviceSynchronize();
     cal_finish = clock();

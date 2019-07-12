@@ -12,13 +12,14 @@
 #include <cuda_runtime.h>
 
 
-
+#define MATRIX_ROWS 1000
+#define MATRIX_COLS 1000
 #define DATA_SIZE 10000000
 #define THREAD_NUM 256
 #define BLOCK_NUM 64
 
 void test_array_sum();
-void test_matrix_product();
+void test_matrix_mult();
 
 
 #endif //ARRAYSUM_CUDA_TEST_H

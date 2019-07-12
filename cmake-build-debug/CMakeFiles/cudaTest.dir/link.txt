@@ -1,1 +1,1 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/cudaTest.dir/main.cpp.o CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o  -o cudaTest /usr/local/cuda/lib64/libcudart_static.a -lpthread -ldl -lrt 
+/usr/bin/c++  -g  -rdynamic CMakeFiles/cudaTest.dir/main.cpp.o CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o CMakeFiles/cudaTest.dir/cudaTest_generated_matrix_mult.cu.o  -o cudaTest /usr/local/cuda/lib64/libcudart_static.a -lpthread -ldl -lrt 

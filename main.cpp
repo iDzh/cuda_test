@@ -78,6 +78,6 @@ int main()
        return 0;
    }
    printf("\nCuda initialized! \n");
-    test_array_sum();
-
+   test_array_sum();
+   test_matrix_mult();
 }

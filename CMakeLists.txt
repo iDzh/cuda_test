@@ -19,6 +19,7 @@ cuda_add_executable(
         cudaTest
         cuda_test.h
         array_sum.cu
+        matrix_mult.cu
         main.cpp
 )
 

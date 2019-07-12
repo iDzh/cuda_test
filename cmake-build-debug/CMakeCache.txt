@@ -354,12 +354,6 @@ ProcessorCount_cmd_getconf:FILEPATH=/usr/bin/getconf
 ProcessorCount_cmd_sysctl:FILEPATH=/sbin/sysctl
 
 //Value Computed by CMake
-arraySum_BINARY_DIR:STATIC=/home/admin1/Desktop/Cuda_test/cmake-build-debug
-
-//Value Computed by CMake
-arraySum_SOURCE_DIR:STATIC=/home/admin1/Desktop/Cuda_test
-
-//Value Computed by CMake
 cudaTest_BINARY_DIR:STATIC=/home/admin1/Desktop/Cuda_test/cmake-build-debug
 
 //Value Computed by CMake
@@ -527,7 +521,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 CUDA_64_BIT_DEVICE_CODE-ADVANCED:INTERNAL=1
 //List of intermediate files that are part of the cuda dependency
 // scanning.
-CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=/home/admin1/Desktop/Cuda_test/cmake-build-debug/CMakeFiles/cudaTest.dir//cudaTest_generated_array_sum.cu.o.depend
+CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=/home/admin1/Desktop/Cuda_test/cmake-build-debug/CMakeFiles/cudaTest.dir//cudaTest_generated_array_sum.cu.o.depend;/home/admin1/Desktop/Cuda_test/cmake-build-debug/CMakeFiles/cudaTest.dir//cudaTest_generated_matrix_multi.cu.o.depend;/home/admin1/Desktop/Cuda_test/cmake-build-debug/CMakeFiles/cudaTest.dir//cudaTest_generated_matrix_mult.cu.o.depend
 //ADVANCED property for variable: CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE
 CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_BUILD_CUBIN

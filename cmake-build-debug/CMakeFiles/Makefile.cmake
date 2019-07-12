@@ -13,6 +13,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.12.3/CMakeSystem.cmake"
   "CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o.cmake.pre-gen"
   "CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o.depend"
+  "CMakeFiles/cudaTest.dir/cudaTest_generated_matrix_mult.cu.o.cmake.pre-gen"
+  "CMakeFiles/cudaTest.dir/cudaTest_generated_matrix_mult.cu.o.depend"
   "/home/admin1/Downloads/clion-2018.2.6/bin/cmake/linux/share/cmake-3.12/Modules/CMakeCInformation.cmake"
   "/home/admin1/Downloads/clion-2018.2.6/bin/cmake/linux/share/cmake-3.12/Modules/CMakeCXXInformation.cmake"
   "/home/admin1/Downloads/clion-2018.2.6/bin/cmake/linux/share/cmake-3.12/Modules/CMakeCommonLanguageInclude.cmake"
@@ -54,7 +56,9 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o.cmake.pre-gen"
+  "CMakeFiles/cudaTest.dir/cudaTest_generated_matrix_mult.cu.o.cmake.pre-gen"
   "CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o.Debug.cmake"
+  "CMakeFiles/cudaTest.dir/cudaTest_generated_matrix_mult.cu.o.Debug.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

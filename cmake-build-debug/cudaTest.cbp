@@ -100,10 +100,16 @@
 		<Unit filename="/home/admin1/Desktop/Cuda_test/cmake-build-debug/CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o">
 			<Option target="cudaTest"/>
 		</Unit>
+		<Unit filename="/home/admin1/Desktop/Cuda_test/cmake-build-debug/CMakeFiles/cudaTest.dir/cudaTest_generated_matrix_mult.cu.o">
+			<Option target="cudaTest"/>
+		</Unit>
 		<Unit filename="/home/admin1/Desktop/Cuda_test/cuda_test.h">
 			<Option target="cudaTest"/>
 		</Unit>
 		<Unit filename="/home/admin1/Desktop/Cuda_test/main.cpp">
+			<Option target="cudaTest"/>
+		</Unit>
+		<Unit filename="/home/admin1/Desktop/Cuda_test/matrix_mult.cu">
 			<Option target="cudaTest"/>
 		</Unit>
 		<Unit filename="/home/admin1/Desktop/Cuda_test/CMakeLists.txt">

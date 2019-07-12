@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cudaTest.dir/cudaTest_generated_array_sum.cu.o"
+  "CMakeFiles/cudaTest.dir/cudaTest_generated_matrix_mult.cu.o"
   "CMakeFiles/cudaTest.dir/main.cpp.o"
   "cudaTest.pdb"
   "cudaTest"
