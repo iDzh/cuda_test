@@ -11,6 +11,10 @@ stdlib.h
 -
 stdio.h
 -
+string.h
+-
+math.h
+-
 time.h
 -
 cuda_runtime.h

@@ -8,13 +8,16 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
 #include <time.h>
 #include <cuda_runtime.h>
 
-
-#define MATRIX_ROWS 1000
-#define MATRIX_COLS 1000
 #define DATA_SIZE 10000000
+#define MATRIX_ROWS 2000
+#define MATRIX_COLS 1000
+#define BLOCK_SIZE 32
+#define SHARED_BLOCK_SIZE 32
 #define THREAD_NUM 256
 #define BLOCK_NUM 64
 
