@@ -135,7 +135,7 @@ void test_matrix_mult_cpu()
         }
     }
     finish = clock();
-    printf("CPU Calculation time: %lf\n",finish, start, CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 0: CPU Calculation time: %lf\n",finish, start, CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 }
 void test_matrix_mult_gpu_original()
 {
@@ -164,7 +164,7 @@ void test_matrix_mult_gpu_original()
     {
         total_err += fabs(C[i] - C_cpu[i]);
     }
-    printf("Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 1: Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 }
 void test_matrix_mult_gpu_one_by_one()
 {
@@ -197,7 +197,7 @@ void test_matrix_mult_gpu_one_by_one()
     {
         total_err += fabs(C[i] - C_cpu[i]);
     }
-    printf("Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 3: Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 
 }
 void test_matrix_mult_gpu_shared_memory()
@@ -237,7 +237,7 @@ void test_matrix_mult_gpu_shared_memory()
     {
         total_err += fabs(C[i] - C_cpu[i]);
     }
-    printf("Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 4: Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 
 
 }
@@ -285,7 +285,7 @@ void test_matrix_mult_gpu_transpose_B()
     {
         total_err += fabs(C[i] - C_cpu[i]);
     }
-    printf("Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 2: Total error: %lf, GPU Calculation time: %lf, Total time: %lf \n", total_err, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 
 }
 void test_matrix_mult()
@@ -305,8 +305,8 @@ void test_matrix_mult()
 //        printf("\n");
 //    }
 //    printf(" \n");
+    printf("Test Matrix Multiplication(A(%dx%d) * B(%dx%d)): \n", MATRIX_ROWS, MATRIX_COLS, MATRIX_COLS, MATRIX_ROWS);
     test_matrix_mult_cpu();
-
     test_matrix_mult_gpu_original();
     test_matrix_mult_gpu_transpose_B();
     test_matrix_mult_gpu_one_by_one();

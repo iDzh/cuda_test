@@ -7,7 +7,7 @@ void generate_rand_array(int *dest, int size)
 {
     srand((int)time(0));
     for(int i = 0; i<size; i++)
-        dest[i] = rand()%1000000;
+        dest[i] = rand()%10000;
 }
 
 
@@ -15,7 +15,7 @@ __global__ static void ArraySumOriginal(int *num, double *result)
 {
     double sum = 0;
     for(int i = 0; i<DATA_SIZE; i++)
-        sum += num[i];
+        sum += num[i]*num[i];
     *result = sum;
 }
 __global__ static void ArraySumThreadParallelNoContinuous(int *num, double *result)
@@ -27,11 +27,11 @@ __global__ static void ArraySumThreadParallelNoContinuous(int *num, double *resu
     if(tid != THREAD_NUM - 1)
     {
         for(int i = size * tid; i < size * (tid + 1); i++)
-            sum += num[i];
+            sum += num[i]*num[i];
     }
     else
         for(int i = size * tid; i < DATA_SIZE; i++)
-            sum += num[i];
+            sum += num[i]*num[i];
     result[tid] = sum;
 }
 __global__ static void ArraySumThreadParallelContinuous(int *num, double *result)
@@ -40,7 +40,7 @@ __global__ static void ArraySumThreadParallelContinuous(int *num, double *result
     double sum = 0;
 
     for(int i = tid; i<DATA_SIZE; i+= THREAD_NUM)
-        sum += num[i];
+        sum += num[i]*num[i];
 
     result[tid] = sum;
 }
@@ -50,7 +50,7 @@ __global__ static void ArraySumThreadBlockParallel(int *num, double *result)
     double sum = 0;
 
     for(int i = tid; i<DATA_SIZE; i+= BLOCK_NUM * THREAD_NUM)
-        sum += num[i];
+        sum += num[i]*num[i];
 
     result[tid] = sum;
 }
@@ -61,7 +61,7 @@ __global__ static void ArraySumThreadBlockParallelSharedMemory(int *num, double 
     shared[tid] = 0;
 
     for(int i = bid * THREAD_NUM + tid; i<DATA_SIZE; i+= BLOCK_NUM * THREAD_NUM)
-        shared[tid] += num[i];
+        shared[tid] += num[i]*num[i];
 
     __syncthreads();
 
@@ -80,7 +80,7 @@ __global__ static void ArraySumThreadBlockParallelSharedMemoryTreePlus(int *num,
     shared[tid] = 0;
 
     for(int i = bid * THREAD_NUM + tid; i<DATA_SIZE; i+= BLOCK_NUM * THREAD_NUM)
-        shared[tid] += num[i];
+        shared[tid] += num[i]*num[i];
 
     __syncthreads();
 
@@ -111,10 +111,10 @@ void test_array_sum_cpu()
     clock_t start = clock();
     for(int i = 0; i<DATA_SIZE; i++)
     {
-        sum += data[i];
+        sum += data[i]*data[i];
     }
     clock_t duration = clock() - start;
-    printf("CPU sum: %lf  CPU Calculation time: %lf\n", sum, (double)duration / CLOCKS_PER_SEC);
+    printf("Mode 0: CPU sum: %lf  CPU Calculation time: %lf\n", sum, (double)duration / CLOCKS_PER_SEC);
 
 }
 
@@ -141,7 +141,7 @@ void test_array_sum_gpu_original()
     cudaFree(gpu_sum);
     finish = clock();
 
-    printf("GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC , 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 1: GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC , 1.0 * (finish - start) / CLOCKS_PER_SEC);
 }
 void test_array_sum_gpu_threads_parallel_no_continuous()
 {
@@ -167,7 +167,7 @@ void test_array_sum_gpu_threads_parallel_no_continuous()
     cudaFree(gpu_sum);
     finish = clock();
 
-    printf("GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 2: GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 
 
 }
@@ -193,7 +193,7 @@ void test_array_sum_gpu_threads_parallel_continuous()
     cudaFree(gpu_data);
     cudaFree(gpu_sum);
     finish = clock();
-    printf("GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 3: GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 
 }
 void test_array_sum_gpu_thread_block_parallel()
@@ -218,7 +218,7 @@ void test_array_sum_gpu_thread_block_parallel()
     cudaFree(gpu_data);
     cudaFree(gpu_sum);
     finish = clock();
-    printf("GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 4: GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 }
 void test_array_sum_gpu_thread_block_parallel_shared_memory()
 {
@@ -242,7 +242,7 @@ void test_array_sum_gpu_thread_block_parallel_shared_memory()
     cudaFree(gpu_data);
     cudaFree(gpu_sum);
     finish = clock();
-    printf("GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 5: GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 
 }
 void test_array_sum_gpu_thread_block_parallel_shared_memory_tree_plus()
@@ -267,7 +267,7 @@ void test_array_sum_gpu_thread_block_parallel_shared_memory_tree_plus()
     cudaFree(gpu_data);
     cudaFree(gpu_sum);
     finish = clock();
-    printf("GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
+    printf("Mode 6: GPU sum: %lf  GPU caltulation time: %lf Total time: %lf\n", total_sum, 1.0 * (cal_finish - cal_start) / CLOCKS_PER_SEC, 1.0 * (finish - start) / CLOCKS_PER_SEC);
 
 }
 
@@ -276,6 +276,7 @@ void test_array_sum_gpu_thread_block_parallel_shared_memory_tree_plus()
 void test_array_sum()
 {
 
+    printf("Test Array's Suqare Sum(%d integers from 0 to 10000): \n", DATA_SIZE);
     generate_rand_array(data, DATA_SIZE);
     test_array_sum_cpu();
     test_array_sum_gpu_original();
