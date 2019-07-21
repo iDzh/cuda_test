@@ -45,6 +45,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/admin1/Downloads/clion-2018.2.6/bin/cmake/linux/share/cmake-3.12/Modules/Platform/UnixPaths.cmake"
   "/home/admin1/Downloads/clion-2018.2.6/bin/cmake/linux/share/cmake-3.12/Modules/ProcessorCount.cmake"
   "/usr/lib/cmake/eigen3/Eigen3Config.cmake"
+  "/usr/local/share/OpenCV/OpenCVConfig-version.cmake"
+  "/usr/local/share/OpenCV/OpenCVConfig.cmake"
+  "/usr/local/share/OpenCV/OpenCVModules-release.cmake"
+  "/usr/local/share/OpenCV/OpenCVModules.cmake"
   )
 
 # The corresponding makefile is:

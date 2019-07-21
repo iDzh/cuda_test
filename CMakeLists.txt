@@ -9,6 +9,8 @@ if(CUDA_FOUND)
 else(CUDA_FOUND)
     message(FATAL_ERROR "Cuda Not Found")
 endif(CUDA_FOUND)
+find_package(OpenCV 3.4.0 REQUIRED)
+
 
 find_package(Eigen3)
 include_directories(${EIGEN3_INCLUDE_DIR})
@@ -23,3 +25,5 @@ cuda_add_executable(
         main.cpp
 )
 
+
+target_link_libraries(cudaTest ${OpenCV_LIBS})

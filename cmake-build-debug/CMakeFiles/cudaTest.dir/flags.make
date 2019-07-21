@@ -6,5 +6,5 @@ CXX_FLAGS = -g
 
 CXX_DEFINES = -DUNICODE -D_UNICODE
 
-CXX_INCLUDES = -I/usr/local/cuda/include -I/usr/include/eigen3 -I/home/admin1/Desktop/Cuda_test/. 
+CXX_INCLUDES = -I/usr/local/cuda/include -I/usr/include/eigen3 -I/home/admin1/Desktop/Cuda_test/. -isystem /usr/local/include -isystem /usr/local/include/opencv 
 

@@ -2,7 +2,11 @@
 // Created by admin1 on 19-7-10.
 //
 #include "cuda_test.h"
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc.hpp>
+#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 //打印设备信息
 void printDeviceProp(const cudaDeviceProp &prop)
 {
@@ -79,7 +83,31 @@ int main()
    }
    printf("\nCuda initialized! \n");
 
-   test_array_sum();
+//   test_array_sum();
+//
+//   test_matrix_mult();
 
-   test_matrix_mult();
+
+   cv::Mat img = cv::imread("/home/admin1/workspace/gipuma/scripts/data/dtu/capture_pic2-0522/0_1.bmp", cv::IMREAD_GRAYSCALE);
+//   cv::imshow("img", img);
+   // cv::waitKey(10000);
+   uchar * s;
+   s = (uchar*)malloc(1024*1280*sizeof(uchar)*3);
+   memcpy(s, img.data, 1024*1280*sizeof(uchar));
+   memcpy(s+1024*1280*sizeof(uchar), img.data, 1024*1280*sizeof(uchar));
+   memcpy(s+1024*1280*sizeof(uchar)*2, img.data, 1024*1280*sizeof(uchar));
+   cv::Mat img_color = cv::Mat(1024, 1280, CV_8UC3, s);
+
+
+   cv::Mat m1 = img(cv::Rect(0,0,15,15));
+   cv::Mat m2 = img_color(cv::Rect(0,0,5,5));
+   std::cout << m1 << std::endl;
+   std::cout << m2 << std::endl;
+
+
+
+
+//   cv::imshow("img_color", img_color);
+//   std::cout << img.channels() << img_color.channels()<<std::endl;
+   cv::waitKey(10000);
 }

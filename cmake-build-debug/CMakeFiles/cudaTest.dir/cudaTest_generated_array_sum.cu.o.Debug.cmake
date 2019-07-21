@@ -79,7 +79,7 @@ set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
 set(nvcc_flags -m64) # list
-set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda/include;/usr/local/cuda/include;/usr/include/eigen3;/home/admin1/Desktop/Cuda_test/.") # list (needs to be in quotes to handle spaces properly).
+set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda/include;/usr/local/cuda/include;/usr/include/eigen3;/home/admin1/Desktop/Cuda_test/.;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv;/usr/local/include;/usr/local/include/opencv") # list (needs to be in quotes to handle spaces properly).
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[UNICODE;_UNICODE]==]) # list (needs to be in lua quotes see #16510 ).
 set(format_flag "-c") # string
 set(cuda_language_flag ) # list
@@ -187,7 +187,7 @@ cuda_execute_process(
 # For CUDA 2.3 and below, -G -M doesn't work, so remove the -G flag
 # for dependency generation and hope for the best.
 set(depends_CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS}")
-set(CUDA_VERSION 10.0)
+set(CUDA_VERSION 9.0)
 if(CUDA_VERSION VERSION_LESS "3.0")
   # Note that this will remove all occurrences of -G.
   list(REMOVE_ITEM depends_CUDA_NVCC_FLAGS "-G")
